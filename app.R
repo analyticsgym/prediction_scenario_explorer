@@ -8,6 +8,7 @@ library(tidyverse)
 library(tidymodels)
 library(mlbench)
 library(xgboost)
+library(bundle)
 
 data(PimaIndiansDiabetes2)
 
@@ -101,12 +102,12 @@ diabetes_df <- PimaIndiansDiabetes2 %>%
 
 saved_mod_bundle <- readRDS(file = "xgb_mod_bundle.rds")
 
-xgb_mod_unbundled <- unbundle(mod_bundle)
+xgb_mod_unbundled <- unbundle(saved_mod_bundle)
 
 ui <- fluidPage(
     titlePanel("Prediction Scenario Explorer"),
     p("Author: Brian Moore (@analyticsanalyst)"),
-    HTML("<p><a href='https://github.com/analyticsanalyst'>Code on Github</a></p>"),
+    HTML("<p><a href='https://github.com/analyticsanalyst/prediction_scenario_explorer'>Code on Github</a></p>"),
     p("Example app comparing predicted probability of testing
        positive for diabetes based on scenario predictor inputs."),
     tags$div(
